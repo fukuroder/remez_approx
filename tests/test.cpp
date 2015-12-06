@@ -1,9 +1,7 @@
-#include<iostream>
 #include<fstream>
 #include<cmath>
 #include"../src/faster_and_better_sin.h"
 #include"fastonebigheader.h" // https://code.google.com/p/fastapprox/
-
 using namespace std;
 
 int main()
