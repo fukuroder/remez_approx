@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import numpy, math
+import numpy
 import sympy.mpmath as sm
 
 sm.mp = 1024
@@ -15,18 +15,17 @@ def dd_polynomial(x, list_a):
 
 def search_extreme_points(list_a):
     def f(x):
-        return d_polynomial(x, list_a) - math.cos(x);
+        return d_polynomial(x, list_a) - sm.cos(x);
 
     def df(x):
-        return dd_polynomial(x, list_a) + math.sin(x);
+        return dd_polynomial(x, list_a) + sm.sin(x);
 
-    check_points = numpy.linspace(0.0, math.pi, 100)
+    check_points = numpy.linspace(0.0, sm.pi, 100)
 
     sign_reverse_section = \
         [p for p in zip(check_points, check_points[1:]) if f(p[0])*f(p[1]) <= 0.0]
 
     return [sm.findroot(f, x, df=df, tol=1.0e-20) for x,_ in sign_reverse_section]
-
 
 ###########################
 # Remez algorithm --step2--
@@ -65,7 +64,7 @@ def check_convergence(
     list_x):
 
     def ef(x):
-        return polynomial(x, list_a)-math.sin(x)
+        return polynomial(x, list_a) - sm.sin(x)
 
     err = numpy.var([ef(x)*(-1)**k for k,x in enumerate(list_x) if k>=1])
     return err < 1.0e-32
@@ -101,7 +100,7 @@ if __name__ == '__main__':
     for k,a in enumerate(list_a):
         print('a[' + str(k) + ']=', sm.nstr(a, 17))
 
-    print('d=', sm.nstr(d, 20))
+    print('d=', sm.nstr(d, 17))
 
     # -2*s0*s1*s3*x**3 + s0*s2*x + s1**2*s3*x**4 + x**2*(s0**2*s3 - s1*s2)
     def f(s0,s1,s2,s3):
@@ -125,17 +124,17 @@ if __name__ == '__main__':
         print('s[' + str(k) + ']=', sm.nstr(s, 17))
 
 #
-#Remez algorithm calculating...OK
+#Remez algorithm calculating... OK
 #a[0]= 0.0
-#a[1]= 0.98971511321738565
-#a[2]= 0.044771099390202698
-#a[3]= -0.22906038058222886
-#a[4]= 0.036456091836172511
-#d= -0.00073239476651250901301
+#a[1]= 0.9897151132173856
+#a[2]= 0.044771099390202579
+#a[3]= -0.22906038058222875
+#a[4]= 0.036456091836172492
+#d= -0.00073239476651250248
 #
-#Newton method calculating...OK
-#s[0]= 1.2728678435556479
-#s[1]= 0.4051664184092053
-#s[2]= 0.77754742428930464
-#s[3]= 0.22207681739058507
+#Newton method calculating... OK
+#s[0]= 1.2728577660723033
+#s[1]= 0.40516321064662885
+#s[2]= 0.7775535802962265
+#s[3]= 0.22208033386249199
 #
