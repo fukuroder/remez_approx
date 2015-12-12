@@ -53,8 +53,8 @@ def update_maximum_error_points(list_a):
     if len(extreme_points) == n+1:
         return [sm.mpf(0.0)] + extreme_points
     else:
-        raise Exception("[ERROR]number of extreme point " + \
-            str(n+2) + "->" + str(len(extreme_points)))
+        raise Exception('[ERROR]number of extreme point ' + \
+            str(n+2) + '->' + str(len(extreme_points)))
 
 ###########################
 # Remez algorithm --step4--
@@ -90,13 +90,13 @@ def remez():
             return list_a, d, list_x, count
 
     else:
-        raise Exception("[ERROR]Remez algorithm failed")
+        raise Exception('[ERROR]Remez algorithm failed')
 
 if __name__ == '__main__':
-    print("Remez algorithm calculating...", end="")
+    print('Remez algorithm calculating...', end='')
     list_a, d, list_x, count = remez()
 
-    print(" OK")
+    print(' OK')
     for k,a in enumerate(list_a):
         print('a[' + str(k) + ']=', sm.nstr(a, 17))
 
@@ -110,7 +110,7 @@ if __name__ == '__main__':
                s1**2*s3         - list_a[4]
 
     print()
-    print("Newton method calculating...", end="")
+    print('Newton method calculating...', end='')
     initilal = (1.2732395447351627, 0.40528473456935109, 0.77633023248007499, 0.22308510060189463);
     list_s = sm.findroot(
             f,
@@ -118,7 +118,7 @@ if __name__ == '__main__':
             method='newton',
             maxsteps=10000,
             tol=1.0e-25)
-    print(" OK")
+    print(' OK')
 
     for k,s in enumerate(list_s):
         print('s[' + str(k) + ']=', sm.nstr(s, 17))
