@@ -1,6 +1,6 @@
 #include <fstream>
 #include <cmath>
-#include "../src/remez_approx.h"
+#include "../remez_approx.h"
 #include "fastonebigheader.h" // https://code.google.com/p/fastapprox/
 using namespace std;
 
