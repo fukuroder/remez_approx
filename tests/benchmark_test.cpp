@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <time.h>
-#include "../src/remez_approx.h"
+#include "../remez_approx.h"
 using namespace std;
 
 static const int DIV = 1000000000;
