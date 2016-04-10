@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, fukuroda(https://github.com/fukuroder)
+ * Copyright (c) 2016, fukuroda(https://github.com/fukuroder)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,8 @@ fastersin (float x)
 }
 */
 
-static inline float remez_sin (float x)
+//
+static inline float remez_sin_f(float x)
 {
     static const float s1 = 1.2728678435556479f;
     static const float s2 = 0.4051664184092053f;
@@ -62,9 +63,70 @@ static inline float remez_sin (float x)
     uint32_t sign = vx.i & 0x80000000;
     vx.i &= 0x7FFFFFFF;
 
-    float qpprox = s1 * x - s2 * x * vx.f;
+    //float qpprox = s1 * x - s2 * x * vx.f;
+    float qpprox = x * (s1 - s2 * vx.f);
 
     s4.i |= sign;
 
     return qpprox * (s3 + s4.f * qpprox);
 }
+
+//
+static inline double remez_sin(double x)
+{
+    static const double s1 = 1.2728678435556479;
+    static const double s2 = 0.4051664184092053;
+    static const double s3 = 0.77754742428930464;
+    union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
+    
+    union { double f; uint64_t i; } vx = { x };
+    uint64_t sign = vx.i & 0x8000000000000000;
+    vx.i &= 0x7FFFFFFFFFFFFFFF;
+    
+    //double qpprox = s1 * x - s2 * x * vx.f;
+    double qpprox = x * (s1 - s2 * vx.f);
+    
+    s4.i |= sign;
+    
+    return qpprox * (s3 + s4.f * qpprox);
+}
+
+/*
+//
+static inline float remez_sin_f2(float x)
+{
+    static const float s1 = 1.2728678435556479f;
+    static const float s2 = 0.4051664184092053f;
+    static const float s3 = 0.77754742428930464f;
+    union { float f; uint32_t i; } s4 = { 0.22207681739058507f };
+    
+    union { float f; uint32_t i; } vx = { x };
+    uint32_t sign = vx.i & 0x80000000;
+    vx.i &= 0x7FFFFFFF;
+    
+    float qpprox = s1 * x - s2 * x * vx.f;
+    
+    s4.i |= sign;
+    
+    return qpprox * (s3 + s4.f * qpprox);
+}
+
+//
+static inline double remez_sin2(double x)
+{
+    static const double s1 = 1.2728678435556479;
+    static const double s2 = 0.4051664184092053;
+    static const double s3 = 0.77754742428930464;
+    union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
+    
+    union { double f; uint64_t i; } vx = { x };
+    uint64_t sign = vx.i & 0x8000000000000000;
+    vx.i &= 0x7FFFFFFFFFFFFFFF;
+    
+    double qpprox = s1 * x - s2 * x * vx.f;
+    
+    s4.i |= sign;
+    
+    return qpprox * (s3 + s4.f * qpprox);
+}
+*/

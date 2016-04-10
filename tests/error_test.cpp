@@ -11,10 +11,10 @@ int main()
         ofstream f("remez_sin_error.dat");
         for( int i = -div; i < div; i++ )
         {
-            float x = 2.0*M_PI*i/div;
+            float x = 2.0f*M_PI*i/div;
             f << x
               << ", "
-              << ::fabs(::remez_sin(x) - ::sin(x))
+              << ::fabs(::remez_sin_f(x) - ::sin(x))
               << endl;
         }
     }
@@ -23,7 +23,7 @@ int main()
         ofstream f("fastersin_error.dat");
         for( int i = -div; i < div; i++ )
         {
-            float x = 2.0*M_PI*i/div;
+            float x = 2.0f*M_PI*i/div;
             f << x
               << ", "
               << ::fabs(::fastersin(x) - ::sin(x))
