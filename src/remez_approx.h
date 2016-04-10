@@ -51,7 +51,7 @@ fastersin (float x)
 }
 */
 
-static inline float faster_and_better_sin (float x)
+static inline float remez_sin (float x)
 {
     static const float s1 = 1.2728678435556479f;
     static const float s2 = 0.4051664184092053f;

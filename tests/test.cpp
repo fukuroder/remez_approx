@@ -1,20 +1,20 @@
-#include<fstream>
-#include<cmath>
-#include"../src/faster_and_better_sin.h"
-#include"fastonebigheader.h" // https://code.google.com/p/fastapprox/
+#include <fstream>
+#include <cmath>
+#include "../src/remez_approx.h"
+#include "fastonebigheader.h" // https://code.google.com/p/fastapprox/
 using namespace std;
 
 int main()
 {
     const int div = 1000;
     {
-        ofstream f("faster_and_better_sin_error.dat");
+        ofstream f("remez_sin_error.dat");
         for( int i = -div; i < div; i++ )
         {
             float x = 2.0*M_PI*i/div;
             f << x
               << ", "
-              << fabs(::faster_and_better_sin(x) - sin(x))
+              << ::fabs(::remez_sin(x) - ::sin(x))
               << endl;
         }
     }
@@ -26,7 +26,7 @@ int main()
             float x = 2.0*M_PI*i/div;
             f << x
               << ", "
-              << fabs(::fastersin(x) - sin(x))
+              << ::fabs(::fastersin(x) - ::sin(x))
               << endl;
         }
     }
