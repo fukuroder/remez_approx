@@ -51,6 +51,8 @@ fastersin (float x)
 }
 */
 
+#pragma once
+
 //
 static inline float remez_sin_f(float x)
 {
@@ -91,7 +93,7 @@ static inline double remez_sin(double x)
     return qpprox * (s3 + s4.f * qpprox);
 }
 
-/*
+#if 0
 //
 static inline float remez_sin_f2(float x)
 {
@@ -129,4 +131,4 @@ static inline double remez_sin2(double x)
     
     return qpprox * (s3 + s4.f * qpprox);
 }
-*/
+#endif
