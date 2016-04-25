@@ -93,7 +93,46 @@ static inline double remez_sin(double x)
     return qpprox * (s3 + s4.f * qpprox);
 }
 
-#if 0
+//
+static inline double remez_sin_int32(int32_t x)
+{
+    const double s1 = 1.2728678435556479 * M_PI / INT32_MAX;
+    const double s2 = 0.4051664184092053 * M_PI * M_PI / INT32_MAX / INT32_MAX;
+    union { double f; uint64_t i; } s3 = { 0.77754742428930464 };
+    union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
+    
+    uint64_t sign = ((uint64_t)x & 0x80000000) << 32;
+    x &= 0x7FFFFFFF;
+    
+    double qpprox = x * (s1 - s2 * x);
+    
+    s3.i |= sign;
+    s4.i |= sign;
+    
+    return qpprox * (s3.f + s4.f * qpprox);
+}
+
+//
+static inline double remez_sin_int64(int64_t x)
+{
+    const double s1 = 1.2728678435556479 * M_PI / INT64_MAX;
+    const double s2 = 0.4051664184092053 * M_PI * M_PI / INT64_MAX / INT64_MAX;
+    union { double f; uint64_t i; } s3 = { 0.77754742428930464 };
+    union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
+    
+    uint64_t sign = x & 0x8000000000000000;
+    x &= 0x7FFFFFFFFFFFFFFF;
+    
+    double qpprox = x * (s1 - s2 * x);
+    
+    s3.i |= sign;
+    s4.i |= sign;
+    
+    return qpprox * (s3.f + s4.f * qpprox);
+}
+
+#ifdef __DEBUG_AAAAA__
+
 //
 static inline float remez_sin_f2(float x)
 {

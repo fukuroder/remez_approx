@@ -1,6 +1,6 @@
 #include <fstream>
 #include <cmath>
-#include "../src/remez_approx.h"
+#include "../remez_approx.h"
 #include "fastonebigheader.h" // https://code.google.com/p/fastapprox/
 using namespace std;
 
@@ -11,7 +11,7 @@ int main()
         ofstream f("remez_sin_error.dat");
         for( int i = -div; i < div; i++ )
         {
-            float x = 2.0f*M_PI*i/div;
+            float x = 2.0*M_PI*i/div;
             f << x
               << ", "
               << ::fabs(::remez_sin_f(x) - ::sin(x))
@@ -23,11 +23,23 @@ int main()
         ofstream f("fastersin_error.dat");
         for( int i = -div; i < div; i++ )
         {
-            float x = 2.0f*M_PI*i/div;
+            float x = 2.0*M_PI*i/div;
             f << x
               << ", "
-              << ::fabs(::fastersin(x) - ::sin(x))
+              << ::fabs(::fastersin(x) - ::sinf(x))
               << endl;
+        }
+    }
+    
+    {
+        ofstream f("remez_sin_int32_error.dat");
+        for( int i = -4*div; i < 4*div; i++ )
+        {
+            double x = M_PI*i/div;
+            f << x
+            << ", "
+            << ::fabs(::remez_sin_int32(INT32_MAX/div*i) - ::sin(x))
+            << endl;
         }
     }
 
