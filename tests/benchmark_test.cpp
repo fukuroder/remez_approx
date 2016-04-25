@@ -100,7 +100,7 @@ static void test_sin()
     << " sum:" << sum << endl;
 }
 
-// remez_sin_uint32 test
+// remez_sin_int32 test
 static void test_remez_sin_int32()
 {
     double sum = 0.0;
@@ -115,7 +115,7 @@ static void test_remez_sin_int32()
     << " sum:" << sum << endl;
 }
 
-// remez_sin_uint64 test
+// remez_sin_int64 test
 static void test_remez_sin_int64()
 {
     double sum = 0.0;
@@ -150,7 +150,6 @@ int main()
 
     test_remez_sin_int32();
     test_remez_sin_int64();
-    
     test_remez_sin_int32();
     test_remez_sin_int64();
     
