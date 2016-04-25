@@ -1,4 +1,4 @@
-// g++ -03 benchmark_test.cpp
+// benchmark_test.cpp
 
 #include <iostream>
 #include <math.h>
