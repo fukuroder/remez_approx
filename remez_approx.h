@@ -54,7 +54,7 @@ fastersin (float x)
 #pragma once
 
 //
-static inline float remez_sin_f(float x)
+static inline float remez_sin_float(float x)
 {
     static const float s1 = 1.2728678435556479f;
     static const float s2 = 0.4051664184092053f;
@@ -131,10 +131,22 @@ static inline double remez_sin_int64(int64_t x)
     return qpprox * (s3.f + s4.f * qpprox);
 }
 
+//
+static inline double remez_cos_int32(int32_t x)
+{
+    return remez_sin_int32( x + 0x3FFFFFFF );
+}
+
+//
+static inline double remez_cos_int64(int64_t x)
+{
+    return remez_sin_int64( x + 0x3FFFFFFFFFFFFFFF );
+}
+
 #ifdef __DEBUG_AAAAA__
 
 //
-static inline float remez_sin_f2(float x)
+static inline float remez_sin_float2(float x)
 {
     static const float s1 = 1.2728678435556479f;
     static const float s2 = 0.4051664184092053f;
