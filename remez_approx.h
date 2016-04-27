@@ -65,7 +65,6 @@ static inline float remez_sin_float(float x)
     uint32_t sign = vx.i & 0x80000000;
     vx.i &= 0x7FFFFFFF;
 
-    //float qpprox = s1 * x - s2 * x * vx.f;
     float qpprox = x * (s1 - s2 * vx.f);
 
     s4.i |= sign;
@@ -84,8 +83,7 @@ static inline double remez_sin(double x)
     union { double f; uint64_t i; } vx = { x };
     uint64_t sign = vx.i & 0x8000000000000000;
     vx.i &= 0x7FFFFFFFFFFFFFFF;
-    
-    //double qpprox = s1 * x - s2 * x * vx.f;
+
     double qpprox = x * (s1 - s2 * vx.f);
     
     s4.i |= sign;
@@ -134,52 +132,23 @@ static inline double remez_sin_int64(int64_t x)
 //
 static inline double remez_cos_int32(int32_t x)
 {
-    return remez_sin_int32( x + 0x3FFFFFFF );
+    return remez_sin_int32(x + 0x3FFFFFFF);
 }
 
 //
 static inline double remez_cos_int64(int64_t x)
 {
-    return remez_sin_int64( x + 0x3FFFFFFFFFFFFFFF );
-}
-
-#ifdef __DEBUG_AAAAA__
-
-//
-static inline float remez_sin_float2(float x)
-{
-    static const float s1 = 1.2728678435556479f;
-    static const float s2 = 0.4051664184092053f;
-    static const float s3 = 0.77754742428930464f;
-    union { float f; uint32_t i; } s4 = { 0.22207681739058507f };
-    
-    union { float f; uint32_t i; } vx = { x };
-    uint32_t sign = vx.i & 0x80000000;
-    vx.i &= 0x7FFFFFFF;
-    
-    float qpprox = s1 * x - s2 * x * vx.f;
-    
-    s4.i |= sign;
-    
-    return qpprox * (s3 + s4.f * qpprox);
+    return remez_sin_int64(x + 0x3FFFFFFFFFFFFFFF);
 }
 
 //
-static inline double remez_sin2(double x)
+static inline double remez_tan_int32(int32_t x)
 {
-    static const double s1 = 1.2728678435556479;
-    static const double s2 = 0.4051664184092053;
-    static const double s3 = 0.77754742428930464;
-    union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
-    
-    union { double f; uint64_t i; } vx = { x };
-    uint64_t sign = vx.i & 0x8000000000000000;
-    vx.i &= 0x7FFFFFFFFFFFFFFF;
-    
-    double qpprox = s1 * x - s2 * x * vx.f;
-    
-    s4.i |= sign;
-    
-    return qpprox * (s3 + s4.f * qpprox);
+    return remez_sin_int32(x) / remez_cos_int32(x);
 }
-#endif
+
+//
+static inline double remez_tan_int64(int64_t x)
+{
+    return remez_sin_int64(x) / remez_cos_int64(x);
+}

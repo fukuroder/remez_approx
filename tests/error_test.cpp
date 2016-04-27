@@ -22,6 +22,18 @@ int main()
     }
     
     {
+        ofstream f("fastertan_error.dat");
+        for( int i = 0; i < div-100; i++ )
+        {
+            float x = M_PI/2*i/div;
+            f << x
+            << ", "
+            << ::fabs(::fastertan(x) - ::tanf(x))
+            << endl;
+        }
+    }
+    
+    {
         ofstream f("remez_sin_error.dat");
         for( int i = -div; i < div; i++ )
         {
@@ -53,6 +65,18 @@ int main()
             f << x
             << ", "
             << ::fabs(::remez_cos_int32(INT32_MAX/div*i) - ::cos(x))
+            << endl;
+        }
+    }
+    
+    {
+        ofstream f("remez_tan_int32_error.dat");
+        for( int i = 0; i < div-100; i++ )
+        {
+            double x = M_PI/2*i/div;
+            f << x
+            << ", "
+            << ::fabs(::remez_tan_int32(INT32_MAX/2/div*i) - ::tan(x))
             << endl;
         }
     }
