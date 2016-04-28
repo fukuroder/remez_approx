@@ -44,7 +44,7 @@ int main()
     for(int i = 0; i < 500; ++i)
     {
         // output
-        std:: cout
+        std::cout
         << remez_sin_int32(t) + remez_sin_int32(2*t)/2 + remez_sin_int32(3*t)/3
         << std::endl;
 
