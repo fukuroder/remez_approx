@@ -4,10 +4,10 @@
 
 ### Available functions
 
-**32bit Floating-point number argmument version(x range: -pi ~ +pi)**
+**32bit Floating-point number argmument version(x range: -pi ~ pi)**
 - float remez_sin_float32(float x)
 
-**64bit Floating-point number argmument version(x range: -pi ~ +pi)**
+**64bit Floating-point number argmument version(x range: -pi ~ pi)**
 - double remez_sin_float64(double x)
 
 **32bit Signed integer argmument version(x range: -2^31 ~ 2^31-1)**
