@@ -56,9 +56,9 @@ fastersin (float x)
 //
 static inline float remez_sin_float32(float x)
 {
-    static const float s1 = 1.2728678435556479f;
-    static const float s2 = 0.4051664184092053f;
-    static const float s3 = 0.77754742428930464f;
+    const float s1 = 1.2728678435556479f;
+    const float s2 = 0.4051664184092053f;
+    const float s3 = 0.77754742428930464f;
     union { float f; uint32_t i; } s4 = { 0.22207681739058507f };
 
     union { float f; uint32_t i; } vx = { x };
@@ -75,9 +75,9 @@ static inline float remez_sin_float32(float x)
 //
 static inline double remez_sin_float64(double x)
 {
-    static const double s1 = 1.2728678435556479;
-    static const double s2 = 0.4051664184092053;
-    static const double s3 = 0.77754742428930464;
+    const double s1 = 1.2728678435556479;
+    const double s2 = 0.4051664184092053;
+    const double s3 = 0.77754742428930464;
     union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
     
     union { double f; uint64_t i; } vx = { x };

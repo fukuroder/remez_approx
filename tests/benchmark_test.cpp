@@ -261,28 +261,28 @@ int main()
 g++ -O3 benchmark_test.cpp
 ./a.out
  
- sinf time:20.0244 sum:-1.67772e+07
- sin time:27.8251 sum:-1.56595e-08
- fastersin time:7.38146 sum:1.50205e+08
- remez_sin_float32 time:6.92444 sum:1.34218e+08
- remez_sin_float64 time:5.69472 sum:-7.98606
- fastersin time:7.22856 sum:1.50205e+08
- remez_sin_float32 time:6.81722 sum:1.34218e+08
- remez_sin_float64 time:5.754 sum:-7.98606
- remez_sin_int32 time:3.83865 sum:-0.899075
- remez_sin_int64 time:3.86383 sum:-2.92303e-10
- remez_sin_int32 time:3.86716 sum:-0.899075
- remez_sin_int64 time:3.85859 sum:-2.92303e-10
- remez_cos_int32 time:3.81529 sum:1.3737e+08
- remez_cos_int64 time:3.80026 sum:0.185218
- remez_cos_int32 time:3.90744 sum:1.3737e+08
- remez_cos_int64 time:3.75297 sum:0.185218
- tanf time:26.4065 sum:-5.13566e+06
- tan time:33.763 sum:-6.3662e+06
- fastertan time:12.8377 sum:-3.61467e+06
- remez_tan_int32 time:14.6117 sum:-15.6482
- remez_tan_int64 time:14.4586 sum:-6.42169e+06
- fastertan time:12.8344 sum:-3.61467e+06
- remez_tan_int32 time:14.6056 sum:-15.6482
- remez_tan_int64 time:14.4565 sum:-6.42169e+06
+ sinf time:19.4483 sum:-1.67772e+07
+ sin time:27.1479 sum:-1.56595e-08
+ fastersin time:7.16098 sum:1.50205e+08
+ remez_sin_float32 time:6.87041 sum:1.34218e+08
+ remez_sin_float64 time:5.6186 sum:-7.98606
+ fastersin time:7.37991 sum:1.50205e+08
+ remez_sin_float32 time:6.8601 sum:1.34218e+08
+ remez_sin_float64 time:5.68558 sum:-7.98606
+ remez_sin_int32 time:4.07169 sum:-0.899075
+ remez_sin_int64 time:3.80955 sum:-2.92303e-10
+ remez_sin_int32 time:3.83168 sum:-0.899075
+ remez_sin_int64 time:3.92108 sum:-2.92303e-10
+ remez_cos_int32 time:3.87572 sum:1.3737e+08
+ remez_cos_int64 time:3.787 sum:0.185218
+ remez_cos_int32 time:3.83369 sum:1.3737e+08
+ remez_cos_int64 time:3.85773 sum:0.185218
+ tanf time:26.3193 sum:-5.13566e+06
+ tan time:33.4081 sum:-6.3662e+06
+ fastertan time:12.6496 sum:-3.61467e+06
+ remez_tan_int32 time:14.3558 sum:-15.6482
+ remez_tan_int64 time:14.3061 sum:-6.42169e+06
+ fastertan time:12.9819 sum:-3.61467e+06
+ remez_tan_int32 time:14.5277 sum:-15.6482
+ remez_tan_int64 time:14.5407 sum:-6.42169e+06
 */
