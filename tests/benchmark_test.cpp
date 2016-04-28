@@ -1,10 +1,8 @@
 // benchmark_test.cpp
 
 #include <iostream>
-#include <math.h>
 #include <time.h>
 
-#define __DEBUG_AAAAA__
 #include "../remez_approx.h"
 #include "../tests/fastonebigheader.h"
 using namespace std;

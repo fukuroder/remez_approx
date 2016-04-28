@@ -52,6 +52,7 @@ fastersin (float x)
 */
 
 #pragma once
+#include <math.h>
 
 //
 static inline float remez_sin_float32(float x)
