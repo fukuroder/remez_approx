@@ -1,6 +1,6 @@
 ### Improve absolute error of the [fastapprox](https://code.google.com/p/fastapprox/) function based on the minimax approximation algorithm.
 
-![screenshot](https://raw.githubusercontent.com/fukuroder/remez_approx/master/figure.png)
+![figure](https://raw.githubusercontent.com/fukuroder/remez_approx/master/figure.png)
 
 ### Available functions
 
@@ -19,3 +19,39 @@
 - double remez_sin_int64(int64_t x)
 - double remez_cos_int64(int64_t x)
 - double remez_tan_int64(int64_t x)
+
+### Example
+
+```cpp
+#include <iostream>
+#include "../remez_approx.h"
+
+int main()
+{
+    // sample rate
+    double sample_rate = 44100.0;
+    
+    // frequency
+    double freq = 440.0;
+    
+    // delta t
+    int32_t dt = static_cast<int32_t>(0xFFFFFFFF / sample_rate * freq);
+
+    // current position
+    int32_t t = 0;
+   
+    // for each sample...
+    for(int i = 0; i < 500; ++i)
+    {
+        // output
+        std:: cout << remez_sin_int32(t) << std::endl;
+        
+        // update position
+        t += dt;
+    }
+    
+    return 0;
+}
+```
+
+![figure](https://raw.githubusercontent.com/fukuroder/remez_approx/master/figure2.png)
