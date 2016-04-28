@@ -30,26 +30,28 @@ int main()
 {
     // sample rate
     double sample_rate = 44100.0;
-    
+
     // frequency
     double freq = 440.0;
-    
+
     // delta t
     int32_t dt = static_cast<int32_t>(0xFFFFFFFF / sample_rate * freq);
 
     // current position
     int32_t t = 0;
-   
+
     // for each sample...
     for(int i = 0; i < 500; ++i)
     {
         // output
-        std:: cout << remez_sin_int32(t) << std::endl;
-        
+        std:: cout
+        << remez_sin_int32(t) + remez_sin_int32(2*t)/2 + remez_sin_int32(3*t)/3
+        << std::endl;
+
         // update position
         t += dt;
     }
-    
+
     return 0;
 }
 ```
