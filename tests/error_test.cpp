@@ -34,13 +34,13 @@ int main()
     }
     
     {
-        ofstream f("remez_sin_error.dat");
+        ofstream f("remez_sin_float32_error.dat");
         for( int i = -div; i < div; i++ )
         {
             float x = 2.0*M_PI*i/div;
             f << x
             << ", "
-            << ::fabs(::remez_sin(x) - ::sin(x))
+            << ::fabs(::remez_sin_float32(x) - ::sinf(x))
             << endl;
         }
     }

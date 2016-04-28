@@ -26,17 +26,17 @@ static void test_fastersin()
     << " sum:" << sum << endl;
 }
 
-// remez_sin_float test
-static void test_remez_sin_float()
+// remez_sin_float32 test
+static void test_remez_sin_float32()
 {
     float sum = 0.0;
     clock_t start = clock();
     for( int i = -DIV; i < DIV; i++ )
     {
         float x = 2.0f*M_PI*i/DIV;
-        sum += remez_sin_float(x);
+        sum += remez_sin_float32(x);
     }
-    cout << "remez_sin_float"
+    cout << "remez_sin_float32"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
@@ -71,17 +71,17 @@ static void test_sin()
     << " sum:" << sum << endl;
 }
 
-// remez_sin test
-static void test_remez_sin()
+// remez_sin_float64 test
+static void test_remez_sin_float64()
 {
     double sum = 0.0;
     clock_t start = clock();
     for( int i = -DIV; i < DIV; i++ )
     {
         double x = 2.0*M_PI*i/DIV;
-        sum += remez_sin(x);
+        sum += remez_sin_float64(x);
     }
-    cout << "remez_sin"
+    cout << "remez_sin_float64"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
@@ -229,11 +229,11 @@ int main()
     test_sin();
     
     test_fastersin();
-    test_remez_sin_float();
-    test_remez_sin();
+    test_remez_sin_float32();
+    test_remez_sin_float64();
     test_fastersin();
-    test_remez_sin_float();
-    test_remez_sin();
+    test_remez_sin_float32();
+    test_remez_sin_float64();
 
     test_remez_sin_int32();
     test_remez_sin_int64();
@@ -261,28 +261,28 @@ int main()
 g++ -O3 benchmark_test.cpp
 ./a.out
  
- sinf time:20.0788 sum:-1.67772e+07
- sin time:27.7474 sum:-1.56595e-08
- fastersin time:7.35187 sum:1.50205e+08
- remez_sin_float time:6.94925 sum:1.34218e+08
- remez_sin time:5.68062 sum:-7.98606
- fastersin time:7.25016 sum:1.50205e+08
- remez_sin_float time:6.85859 sum:1.34218e+08
- remez_sin time:5.91581 sum:-7.98606
- remez_sin_int32 time:4.33859 sum:-0.899075
- remez_sin_int64 time:4.59011 sum:-2.92303e-10
- remez_sin_int32 time:4.1008 sum:-0.899075
- remez_sin_int64 time:4.00598 sum:-2.92303e-10
- remez_cos_int32 time:3.92602 sum:1.3737e+08
- remez_cos_int64 time:3.86993 sum:0.185218
- remez_cos_int32 time:3.98183 sum:1.3737e+08
- remez_cos_int64 time:3.8601 sum:0.185218
- tanf time:25.9284 sum:-5.13566e+06
- tan time:33.8943 sum:-6.3662e+06
- fastertan time:12.6608 sum:-3.61467e+06
- remez_tan_int32 time:14.1922 sum:-15.6482
- remez_tan_int64 time:14.1808 sum:-6.42169e+06
- fastertan time:12.712 sum:-3.61467e+06
- remez_tan_int32 time:14.2247 sum:-15.6482
- remez_tan_int64 time:14.1428 sum:-6.42169e+06
+ sinf time:20.0244 sum:-1.67772e+07
+ sin time:27.8251 sum:-1.56595e-08
+ fastersin time:7.38146 sum:1.50205e+08
+ remez_sin_float32 time:6.92444 sum:1.34218e+08
+ remez_sin_float64 time:5.69472 sum:-7.98606
+ fastersin time:7.22856 sum:1.50205e+08
+ remez_sin_float32 time:6.81722 sum:1.34218e+08
+ remez_sin_float64 time:5.754 sum:-7.98606
+ remez_sin_int32 time:3.83865 sum:-0.899075
+ remez_sin_int64 time:3.86383 sum:-2.92303e-10
+ remez_sin_int32 time:3.86716 sum:-0.899075
+ remez_sin_int64 time:3.85859 sum:-2.92303e-10
+ remez_cos_int32 time:3.81529 sum:1.3737e+08
+ remez_cos_int64 time:3.80026 sum:0.185218
+ remez_cos_int32 time:3.90744 sum:1.3737e+08
+ remez_cos_int64 time:3.75297 sum:0.185218
+ tanf time:26.4065 sum:-5.13566e+06
+ tan time:33.763 sum:-6.3662e+06
+ fastertan time:12.8377 sum:-3.61467e+06
+ remez_tan_int32 time:14.6117 sum:-15.6482
+ remez_tan_int64 time:14.4586 sum:-6.42169e+06
+ fastertan time:12.8344 sum:-3.61467e+06
+ remez_tan_int32 time:14.6056 sum:-15.6482
+ remez_tan_int64 time:14.4565 sum:-6.42169e+06
 */

@@ -54,7 +54,7 @@ fastersin (float x)
 #pragma once
 
 //
-static inline float remez_sin_float(float x)
+static inline float remez_sin_float32(float x)
 {
     static const float s1 = 1.2728678435556479f;
     static const float s2 = 0.4051664184092053f;
@@ -73,7 +73,7 @@ static inline float remez_sin_float(float x)
 }
 
 //
-static inline double remez_sin(double x)
+static inline double remez_sin_float64(double x)
 {
     static const double s1 = 1.2728678435556479;
     static const double s2 = 0.4051664184092053;
