@@ -24,7 +24,7 @@
 
 ```cpp
 #include <iostream>
-#include "../remez_approx.h"
+#include "remez_approx.h"
 
 int main()
 {
