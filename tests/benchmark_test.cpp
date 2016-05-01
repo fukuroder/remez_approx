@@ -17,7 +17,7 @@ static void test_fastersin()
     for( int i = -DIV; i < DIV; i++ )
     {
         float x = 2.0f*3.141592f/DIV*i;
-        sum += fastersin(x);
+        sum += fastersin(x*5/3);
     }
     cout << "fastersin"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
@@ -32,7 +32,7 @@ static void test_remez_sin_float32()
     for( int i = -DIV; i < DIV; i++ )
     {
         float x = 2.0f*3.141592f/DIV*i;
-        sum += remez_sin_float32(x);
+        sum += remez_sin_float32(x*5/3);
     }
     cout << "remez_sin_float32"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
@@ -47,7 +47,7 @@ static void test_sinf()
     for( int i = -DIV; i < DIV; i++ )
     {
         float x = 2.0f*3.141592f/DIV*i;
-        sum += sinf(x);
+        sum += sinf(x*5/3);
     }
     cout << "sinf"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
@@ -62,7 +62,7 @@ static void test_sin()
     for( int i = -DIV; i < DIV; i++ )
     {
         double x = 2.0*M_PI/DIV*i;
-        sum += sin(x);
+        sum += sin(x*5/3);
     }
     cout << "sin"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
@@ -77,7 +77,7 @@ static void test_remez_sin_float64()
     for( int i = -DIV; i < DIV; i++ )
     {
         double x = 2.0*M_PI/DIV*i;
-        sum += remez_sin_float64(x);
+        sum += remez_sin_float64(x*5/3);
     }
     cout << "remez_sin_float64"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
@@ -85,62 +85,62 @@ static void test_remez_sin_float64()
 }
 
 
-// remez_sin_uint32 test
-static void test_remez_sin_uint32()
+// remez_sin_int32 test
+static void test_remez_sin_int32()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( uint32_t i = 0; i < 2*DIV; i++ )
+    for( int32_t i = -DIV; i < DIV; i++ )
     {
-        uint32_t x = UINT32_MAX / DIV * i;
-        sum += remez_sin_uint32(x*5/3);
+        int32_t x = INT32_MAX/DIV*i;
+        sum += remez_sin_int32(x*5/3);
     }
-    cout << "remez_sin_uint32"
+    cout << "remez_sin_int32"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
 
-// remez_sin_uint64 test
-static void test_remez_sin_uint64()
+// remez_sin_int64 test
+static void test_remez_sin_int64()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( uint64_t i = 0; i < 2*DIV; i++ )
+    for( int64_t i = -DIV; i < DIV; i++ )
     {
-        uint64_t x = UINT64_MAX / DIV * i;
-        sum += remez_sin_uint64(x*5/3);
+        int64_t x = INT64_MAX/DIV*i;
+        sum += remez_sin_int64(x*5/3);
     }
-    cout << "remez_sin_uint64"
+    cout << "remez_sin_int64"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
 
-// remez_cos_uint32 test
-static void test_remez_cos_uint32()
+// remez_cos_int32 test
+static void test_remez_cos_int32()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( uint32_t i = 0; i < 2*DIV; i++ )
+    for( int32_t i = -DIV; i < DIV; i++ )
     {
-        uint32_t x = UINT32_MAX / DIV * i;
-        sum += remez_cos_uint32(x*5/3);
+        int32_t x = INT32_MAX/DIV*i;
+        sum += remez_cos_int32(x*5/3);
     }
-    cout << "remez_cos_uint32"
+    cout << "remez_cos_int32"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
 
-// remez_cos_uint64 test
-static void test_remez_cos_uint64()
+// remez_cos_int64 test
+static void test_remez_cos_int64()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( uint64_t i = 0; i < 2*DIV; i++ )
+    for( int64_t i = -DIV; i < DIV; i++ )
     {
-        uint64_t x = UINT64_MAX / DIV * i;
-        sum += remez_cos_uint64(x*5/3);
+        int64_t x = INT64_MAX/DIV*i;
+        sum += remez_cos_int64(x*5/3);
     }
-    cout << "remez_cos_uint64"
+    cout << "remez_cos_int64"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
@@ -150,9 +150,9 @@ static void test_fastertan()
 {
     float sum = 0.0;
     clock_t start = clock();
-    for( int i = 0; i < DIV-100; i++ )
+    for( int i = -DIV+100; i < DIV-100; i++ )
     {
-        float x = 3.141592f/2*i/DIV;
+        float x = 3.141592f/2/DIV*i;
         sum += fastertan(x);
     }
     cout << "fastertan"
@@ -165,7 +165,7 @@ static void test_tanf()
 {
     float sum = 0.0;
     clock_t start = clock();
-    for( int i = 0; i < DIV-100; i++ )
+    for( int i = -DIV+100; i < DIV-100; i++ )
     {
         float x = 3.141592f/2/DIV*i;
         sum += tanf(x);
@@ -181,7 +181,7 @@ static void test_tan()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( int i = 0; i < DIV-100; i++ )
+    for( int i = -DIV+100; i < DIV-100; i++ )
     {
         double x = M_PI/2/DIV*i;
         sum += tan(x);
@@ -191,32 +191,32 @@ static void test_tan()
     << " sum:" << sum << endl;
 }
 
-// remez_tan_uint32 test
-static void test_remez_tan_uint32()
+// remez_tan_int32 test
+static void test_remez_tan_int32()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( uint32_t i = 0; i < DIV-100; i++ )
+    for( int32_t i = -DIV+100; i < DIV-100; i++ )
     {
-        uint32_t x = UINT32_MAX / 4 / DIV * i;
-        sum += remez_tan_uint32(x);
+        int32_t x = INT32_MAX/2/DIV*i;
+        sum += remez_tan_int32(x);
     }
-    cout << "remez_tan_uint32"
+    cout << "remez_tan_int32"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
 
-// remez_tan_uint64 test
-static void test_remez_tan_uint64()
+// remez_tan_int64 test
+static void test_remez_tan_int64()
 {
     double sum = 0.0;
     clock_t start = clock();
-    for( uint64_t i = 0; i < DIV-100; i++ )
+    for( int64_t i = -DIV+100; i < DIV-100; i++ )
     {
-        uint64_t x = UINT64_MAX / 4 / DIV * i;
-        sum += remez_tan_uint64(x);
+        int64_t x = INT64_MAX/2/DIV*i;
+        sum += remez_tan_int64(x);
     }
-    cout << "remez_tan_uint64"
+    cout << "remez_tan_int64"
     << " time:" << static_cast<double>(clock()-start)/CLOCKS_PER_SEC
     << " sum:" << sum << endl;
 }
@@ -233,24 +233,24 @@ int main()
     test_remez_sin_float32();
     test_remez_sin_float64();
 
-    test_remez_sin_uint32();
-    test_remez_sin_uint64();
-    test_remez_sin_uint32();
-    test_remez_sin_uint64();
+    test_remez_sin_int32();
+    test_remez_sin_int64();
+    test_remez_sin_int32();
+    test_remez_sin_int64();
     
-    test_remez_cos_uint32();
-    test_remez_cos_uint64();
-    test_remez_cos_uint32();
-    test_remez_cos_uint64();
+    test_remez_cos_int32();
+    test_remez_cos_int64();
+    test_remez_cos_int32();
+    test_remez_cos_int64();
     
     test_tanf();
     test_tan();
     test_fastertan();
-    test_remez_tan_uint32();
-    test_remez_tan_uint64();
+    test_remez_tan_int32();
+    test_remez_tan_int64();
     test_fastertan();
-    test_remez_tan_uint32();
-    test_remez_tan_uint64();
+    test_remez_tan_int32();
+    test_remez_tan_int64();
     
     return 0;
 }
@@ -259,28 +259,29 @@ int main()
 g++ -O3 benchmark_test.cpp
 ./a.out
  
- sinf time:12.7313 sum:-1.67772e+07
- sin time:22.5174 sum:1.32338e-08
- fastersin time:4.64401 sum:1.50202e+08
- remez_sin_float32 time:4.35317 sum:1.34218e+08
- remez_sin_float64 time:4.08999 sum:-7.98606
- fastersin time:4.9879 sum:1.50202e+08
- remez_sin_float32 time:4.3618 sum:1.34218e+08
- remez_sin_float64 time:4.16636 sum:-7.98606
- remez_sin_uint32 time:3.9749 sum:1.40528e+09
- remez_sin_uint64 time:4.09153 sum:1.43217e+09
- remez_sin_uint32 time:3.82111 sum:1.40528e+09
- remez_sin_uint64 time:4.21416 sum:1.43217e+09
- remez_cos_uint32 time:5.37748 sum:8.61828e+08
- remez_cos_uint64 time:6.77517 sum:8.27115e+08
- remez_cos_uint32 time:5.37755 sum:8.61828e+08
- remez_cos_uint64 time:6.70168 sum:8.27115e+08
- tanf time:8.96199 sum:7.92169e+09
- tan time:14.383 sum:9.97043e+09
- fastertan time:5.87472 sum:7.87425e+09
- remez_tan_uint32 time:4.04949 sum:1.52581e+09
- remez_tan_uint64 time:4.61796 sum:1.00517e+10
- fastertan time:5.89041 sum:7.87425e+09
- remez_tan_uint32 time:4.06098 sum:1.52581e+09
- remez_tan_uint64 time:4.6505 sum:1.00517e+10
+ sinf time:18.8891 sum:-1.67772e+07
+ sin time:31.7055 sum:0.866025
+ fastersin time:7.54966 sum:4.29497e+09
+ remez_sin_float32 time:7.19581 sum:4.29497e+09
+ remez_sin_float64 time:6.82226 sum:-190.64
+ fastersin time:7.59518 sum:4.29497e+09
+ remez_sin_float32 time:7.20716 sum:4.29497e+09
+ remez_sin_float64 time:6.8095 sum:-190.64
+ remez_sin_int32 time:6.44008 sum:0.594805
+ remez_sin_int64 time:6.05396 sum:-0.866318
+ remez_sin_int32 time:6.46647 sum:0.594805
+ remez_sin_int64 time:6.06535 sum:-0.866318
+ remez_cos_int32 time:6.21992 sum:1.68124e+09
+ remez_cos_int64 time:6.362 sum:1.65423e+09
+ remez_cos_int32 time:6.31997 sum:1.68124e+09
+ remez_cos_int64 time:6.39792 sum:1.65423e+09
+ tanf time:18.6343 sum:-2.3088e+06
+ tan time:31.4872 sum:-6.3662e+06
+ fastertan time:9.56093 sum:-2.16804e+06
+ remez_tan_int32 time:14.5696 sum:-7.61073e-07
+ remez_tan_int64 time:14.5381 sum:-6.42169e+06
+ fastertan time:9.62786 sum:-2.16804e+06
+ remez_tan_int32 time:14.6605 sum:-7.61073e-07
+ remez_tan_int64 time:14.5146 sum:-6.42169e+06
+
 */

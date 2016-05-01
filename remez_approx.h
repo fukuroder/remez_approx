@@ -93,10 +93,10 @@ static inline double remez_sin_float64(double x)
 }
 
 //
-static inline double remez_sin_uint32(uint32_t x)
+static inline double remez_sin_int32(int32_t x)
 {
-    const double s1 = 1.2728678435556479 * M_PI / 0x7FFFFFFF;
-    const double s2 = 0.4051664184092053 * M_PI * M_PI / 0x7FFFFFFF / 0x7FFFFFFF;
+    const double s1 = 1.2728678435556479 * M_PI / INT32_MAX;
+    const double s2 = 0.4051664184092053 * M_PI * M_PI / INT32_MAX / INT32_MAX;
     union { double f; uint64_t i; } s3 = { 0.77754742428930464 };
     union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
     
@@ -112,10 +112,10 @@ static inline double remez_sin_uint32(uint32_t x)
 }
 
 //
-static inline double remez_sin_uint64(uint64_t x)
+static inline double remez_sin_int64(int64_t x)
 {
-    const double s1 = 1.2728678435556479 * M_PI / 0x7FFFFFFFFFFFFFFF;
-    const double s2 = 0.4051664184092053 * M_PI * M_PI / 0x7FFFFFFFFFFFFFFF / 0x7FFFFFFFFFFFFFFF;
+    const double s1 = 1.2728678435556479 * M_PI / INT64_MAX;
+    const double s2 = 0.4051664184092053 * M_PI * M_PI / INT64_MAX / INT64_MAX;
     union { double f; uint64_t i; } s3 = { 0.77754742428930464 };
     union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
     
@@ -131,25 +131,25 @@ static inline double remez_sin_uint64(uint64_t x)
 }
 
 //
-static inline double remez_cos_uint32(uint32_t x)
+static inline double remez_cos_int32(int32_t x)
 {
-    return remez_sin_uint32(x + 0x40000000);
+    return remez_sin_int32(x + 0x40000000);
 }
 
 //
-static inline double remez_cos_uint64(uint64_t x)
+static inline double remez_cos_int64(int64_t x)
 {
-    return remez_sin_uint64(x + 0x4000000000000000);
+    return remez_sin_int64(x + 0x4000000000000000);
 }
 
 //
-static inline double remez_tan_uint32(uint32_t x)
+static inline double remez_tan_int32(int32_t x)
 {
-    return remez_sin_uint32(x) / remez_cos_uint32(x);
+    return remez_sin_int32(x) / remez_cos_int32(x);
 }
 
 //
-static inline double remez_tan_uint64(int64_t x)
+static inline double remez_tan_int64(int64_t x)
 {
-    return remez_sin_uint64(x) / remez_cos_uint64(x);
+    return remez_sin_int64(x) / remez_cos_int64(x);
 }

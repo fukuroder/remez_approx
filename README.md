@@ -10,15 +10,15 @@
 **64bit Floating-point number argument version(x range: -pi ~ pi)**
 - double remez_sin_float64(double x)
 
-**32bit Signed integer argument version(x range: 0 ~ 2^32-1)**
-- double remez_sin_uint32(uint32_t x)
-- double remez_cos_uint32(uint32_t x)
-- double remez_tan_uint32(uint32_t x)
+**32bit Signed integer argument version(x range: -2^31 ~ 2^31-1)**
+- double remez_sin_int32(int32_t x)
+- double remez_cos_int32(int32_t x)
+- double remez_tan_int32(int32_t x)
 
-**64bit Signed integer argument version(x range: 0 ~ 2^64-1)**
-- double remez_sin_uint64(uint64_t x)
-- double remez_cos_uint64(uint64_t x)
-- double remez_tan_uint64(uint64_t x)
+**64bit Signed integer argument version(x range: -2^63 ~ 2^63-1)**
+- double remez_sin_int64(int64_t x)
+- double remez_cos_int64(int64_t x)
+- double remez_tan_int64(int64_t x)
 
 ### Example
 
@@ -35,17 +35,17 @@ int main()
     double freq = 440.0;
 
     // delta t
-    uint32_t dt = static_cast<uint32_t>(0xFFFFFFFF / sample_rate * freq);
+    int32_t dt = static_cast<int32_t>(0xFFFFFFFF / sample_rate * freq);
 
     // current position
-    uint32_t t = 0;
+    int32_t t = 0;
 
     // for each sample...
     for(int i = 0; i < 500; ++i)
     {
         // output
         std::cout
-        << remez_sin_uint32(t) + remez_sin_uint32(2*t)/2 + remez_sin_uint32(3*t)/3
+        << remez_sin_int32(t) + remez_sin_int32(2*t)/2 + remez_sin_int32(3*t)/3
         << std::endl;
 
         // update position
