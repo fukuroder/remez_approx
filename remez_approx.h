@@ -52,9 +52,8 @@ fastersin (float x)
 */
 
 #pragma once
-
-#define _USE_MATH_DEFINES
-#include <math.h>
+#define M_PI 3.14159265358979323846 
+#include <cstdint>
 
 //
 static inline float remez_sin_float32(float x)
