@@ -101,7 +101,7 @@ static inline double remez_sin_int32(int32_t x)
     union { double f; uint64_t i; } s3 = { 0.77754742428930464 };
     union { double f; uint64_t i; } s4 = { 0.22207681739058507 };
     
-    uint64_t sign = ((uint64_t)x & 0x80000000) << 32;
+    uint64_t sign = ((uint64_t)(x & 0x80000000)) << 32;
     x &= 0x7FFFFFFF;
     
     double qpprox = x * (s1 - s2 * x);
